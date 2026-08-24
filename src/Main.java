@@ -7,9 +7,10 @@ void main() {
 
     System.out.println("¡Bienvenido a nuestro sistema de Reserva de Citas!");
 
-    Menu();
 
     while (accion != 4) {
+
+        Menu();
 
         System.out.println("\n¿Qué te gustaría hacer?");
 
@@ -34,26 +35,32 @@ public static void opciones(int x) {
         case 1:
             System.out.println("\nPágina de reservas en desarrollo...");
             System.out.println("Disculpa las molestias.");
+            System.out.println();
             break;
 
         case 2:
             System.out.println("\nPágina de consultas en desarrollo...");
             System.out.println("Disculpa las molestias.");
+            System.out.println();
             break;
 
         case 3:
             System.out.println("\nPágina de cancelación en desarrollo...");
             System.out.println("Disculpa las molestias.");
+            System.out.println();
             break;
 
         case 4:
             System.out.println();
             System.out.println("\nEsperamos tenerte pronto con nosotros.");
             System.out.println("¡Hasta pronto!");
+            System.out.println();
             break;
 
         default:
             System.out.println("Opción no válida.");
+            System.out.println("Por favor, elige una opción del menú.");
+            System.out.println();
     }
 }
 
