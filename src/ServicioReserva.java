@@ -31,4 +31,43 @@ public class ServicioReserva {
             }
         }
     }
+
+    /**Este método nos permite buscar una reserva por su identificador**/
+    public Reserva buscarIdReserva(int idReserva){
+        for (int i = 0; i <reservas.size(); i++){
+            Reserva reservaExistente = reservas.get(i);
+
+            if (reservaExistente.getIdReserva() == idReserva){
+                return reservaExistente;
+            }
+        }
+
+        throw new IllegalArgumentException(
+                "No existe la reserva"
+        );
+    }
+
+    /**Mediante este método vamos a listar las reservas que tenemos en la aplicación**/
+    public List<Reserva> listarReservas(){
+
+        return reservas;
+    }
+
+    /**Este método nos permite eliminar una reserva de nuestra elección**/
+    public Reserva eliminarReserva(int id){
+        for(int i = 0; i < reservas.size(); i++){
+
+            Reserva reservaExistente = reservas.get(i);
+
+            if (id == reservaExistente.getIdReserva()){
+                reservas.remove(i);
+
+                return reservaExistente;
+            }
+        }
+
+        throw new IllegalArgumentException(
+                "La reserva no existe."
+        );
+    }
 }
