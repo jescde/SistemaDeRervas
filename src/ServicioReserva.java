@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class ServicioReserva {
         }
 
         comprobarReservas(reserva);
+
+        comprobarDisponibilidad(reserva.getHabitacion().getIdHabitacion(),
+                reserva.getFechaEntrada(), reserva.getFechaSalida());
 
         reservas.add(reserva);
     }
@@ -69,5 +73,21 @@ public class ServicioReserva {
         throw new IllegalArgumentException(
                 "La reserva no existe."
         );
+    }
+
+    /**Con este método comprobamos la disponibilidad de las habitaciones, para que no coincidan ni se solapen fechas**/
+    public void comprobarDisponibilidad(int idHabitacion, LocalDate nuevaFechaEntrada, LocalDate nuevaFechaSalida){
+        for(int i = 0; i < reservas.size(); i++){
+
+            Reserva reservaExistente = reservas.get(i);
+
+            if (reservaExistente.getHabitacion().getIdHabitacion() == idHabitacion
+                    && nuevaFechaEntrada.isBefore(reservaExistente.getFechaSalida())
+                    && nuevaFechaSalida.isAfter(reservaExistente.getFechaEntrada())){
+                throw new IllegalArgumentException(
+                        "La habitación no está disponible en estas fechas."
+                );
+            }
+        }
     }
 }
